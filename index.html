@@ -51,10 +51,61 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Compre pelo telefone 0800-0000-2222</a>
       </li>
+      <li class="nav-item">
+        <a href="#" id="aClientes" class="nav-link"> Clientes </a>
+      </li>
+        <li class="nav-item">
+        <a href="#" id="aProdutos" class="nav-link"> Produtos </a>
+      </li>
     </ul>
   </div>
 </nav>
-  <script src="script.js"></script>
+
+
+<div class="clientContainer ml-4" style="display:none;">
+  <div class="row">
+    <div class="col">
+
+    <form>
+    <div class="form-group">
+    <label for="txtNome">Nome</label>
+    <input type="text" class="form-control" id="txtNome" placeholder="Digite o nome">
+    </div>
+    <div class="form-group">
+      <label for="txtEmail">Email </label>
+      <input type="email" class="form-control" id="txtEmail" placeholder="Digite o email"> 
+    </div>
+    <div class="form-group">
+      <label for="txtCep">Cep</label>
+      <input type="number" class="form-control" id="txtCep" placeholder=" Digite o CEP">
+    </div>
+    <button id="btnClientSubmit" type="button" class="btn btn-primary">Salvar</button>
+  </form>
+  </div>
+  </div>
+</div>
+
+
+<div class="productContainer ml-4" style="display:none;">
+  <div class="row">
+    <div class="col">
+
+    <form>
+    <div class="form-group">
+    <label for="txtProduto">Produto</label>
+    <input type="text" class="form-control" id="txtProduto" placeholder="Digite o produto">
+    </div>
+    <div class="form-group">
+      <label for="txtValor">Valor </label>
+      <input type="email" class="form-control" id="txtValor" placeholder="Digite o valor"> 
+    </div>
+    
+    <button id="btnProductSubmit" type="button" class="btn btn-primary">Salvar</button>
+  </form>
+  </div>
+  </div>
+</div>
+
 
   <!-- carousel -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -165,6 +216,33 @@
     }
 
   });
+  $("#aClientes").click(function(){
+    $(".clientContainer").show();
+  });
+
+  $("#btnClientSubmit").click(function(){
+    if(typeof(Storage)!=="undefined"){
+      sessionStorage.setItem("nome", $("#txtNome").val());
+      sessionStorage.setItem("email", $("#txtEmail").val());
+      sessionStorage.setItem("cep", $("#txtCep").val());
+    }
+    $(".clientContainer").hide();
+  });
+
+
+$("#aProdutos").click(function(){
+    $(".productContainer").show();
+  });
+
+  $("#btnProductSubmit").click(function(){
+    if(typeof(Storage)!=="undefined"){
+      sessionStorage.setItem("produto", $("#txtProduto").val());
+      sessionStorage.setItem("valor", $("#txtValor").val());
+     
+    }
+    $(".productContainer").hide();
+  });
+  
 </script>
 </body>
 </html>
